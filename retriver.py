@@ -2,8 +2,11 @@ from langchain_qdrant import QdrantVectorStore
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 import json
 import google.generativeai as genai
+import os
 
-genai.configure(api_key="AIzaSyDzyFEdafRrhZn-W63lcjqx42TbQ_1YiYw")
+api = os.environ.get("GOOGLE_API_KEY")
+
+genai.configure(api_key=api)
 
 embeddings = GoogleGenerativeAIEmbeddings(
     model="models/embedding-001",
